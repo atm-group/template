@@ -9,6 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "suppressImplicitAnyIndexErrors": true,
     "removeComments": false,
+    "moduleResolution": "Node",
     "preserveConstEnums": true,
     "experimentalDecorators": true,
     "noImplicitReturns": true,
