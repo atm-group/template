@@ -60,27 +60,26 @@ module.exports = {
           { 
             loader: 'css-loader',
             options: {
-              modules: false,
+              modules: true,
             }
           },
           { loader: 'less-loader' }
         ]
       },
       {
-        test: /\.png|jpeg|jpg$/,
+        test: /\.png|jpeg|jpg|svg|gif$/,
         use: [
           {
             loader: 'url-loader',
             options: {
-              mimetype: 'image/png'
+              limit: 10*1024,
+	            esModule: false,
+              mimetype: 'image/',
+              name: '[name].[hash:6][ext]'
             }
           }
         ]
       },
-      {
-        test: /\.svg$/,
-        use: 'file-loader'
-      }
     ],
   },
   resolve: {
