@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const pkg = require('../package.json')
 const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin');
+const SentryCliPlugin = require('@sentry/webpack-plugin');
 
 
 module.exports = {
@@ -67,18 +68,17 @@ module.exports = {
         ]
       },
       {
-        test: /\.png|jpeg|jpg|svg|gif$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10*1024,
-	            esModule: false,
-              mimetype: 'image/',
-              name: '[name].[hash:6][ext]'
-            }
+        test: /\.(png|jpeg|jpg|gif|svg)$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024
           }
-        ]
+        },
+        generator: {
+          filename: 'img/[name].[hash:6][ext]',
+          publicPath: './'
+        }
       },
     ],
   },
@@ -110,6 +110,14 @@ module.exports = {
       Publish time: ${new Date().toString()}, 
       file:[file]
       `
+    }),
+    new SentryCliPlugin({
+      release:`${pkg.name}@${pkg.version}`,
+      include: "./dist",
+      ignoreFile: ".sentrycliignore",
+      ignore: ["node_modules", "webpack.config.js"],
+      configFile: './.sentryclirc', 
+      // urlPrefix:"http://localhost:8081/"
     }),
   ],
   // list of additional plugins

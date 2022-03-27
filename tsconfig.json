@@ -18,7 +18,7 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "outDir": "lib",
-    "rootDir": "src",
+    "rootDir": "./",
     "baseUrl": ".",
     "esModuleInterop": true,
     "paths": {

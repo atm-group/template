@@ -1,0 +1,6 @@
+[defaults]
+url = 'https://www.tipsyblock.com/'
+org = 'north'
+project = 'mcm-react-test'
+[auth]
+token = ed31922310db40d6a2715ceb75d8e4f2c2ac12a2fc134b1a8c6740dc2c109508

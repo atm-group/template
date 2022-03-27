@@ -64,18 +64,17 @@ module.exports = {
         ]
       },
       {
-        test: /\.png|jpeg|jpg|svg|gif$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10*1024,
-	            esModule: false,
-              mimetype: 'image/',
-              name: '[name].[hash:6][ext]'
+        test: /\.(png|jpeg|jpg|gif|svg)$/,
+        type: 'asset',
+        parser: {
+            dataUrlCondition: {
+                maxSize: 10 * 1024
             }
-          }
-        ]
+        },
+        generator: {
+            filename: 'img/[name].[hash:6][ext]',
+            publicPath: './'
+        }
       },
     ]
   },
