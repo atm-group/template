@@ -106,7 +106,7 @@ module.exports = {
     new webpack.BannerPlugin({
       entryOnly: true,
       banner: () => `
-      MCM Version:${pkg.version} 
+      ATM Version:${pkg.version} 
       Publish time: ${new Date().toString()}, 
       file:[file]
       `
@@ -132,10 +132,9 @@ module.exports = {
     minimizer: [new TerserPlugin({
       extractComments: false,
     })],
-    minimize: false,
     concatenateModules: false,
     providedExports: false,
-    usedExports: false 
+    usedExports: true 
   },
   performance: {
     hints: "warning",
